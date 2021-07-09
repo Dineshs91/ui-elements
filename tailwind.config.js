@@ -30,6 +30,7 @@ module.exports = {
       },
       boxShadow: {
         'green-lg': '0 10px 15px 0px rgba(167, 243, 208, 1), 0 4px 6px -2px rgba(167, 243, 208, 0.1)',
+        'deep-inner': 'inset 0 2px 4px 0 #dc2626'
       }
     },
   },

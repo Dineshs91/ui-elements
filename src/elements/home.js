@@ -8,7 +8,7 @@ export default function Home() {
       <div className="bg-smokey-blue-mesh absolute h-4/5 opacity-70 w-full bg-100%"></div>
       <div className="flex-grow relative text-center z-10">
         <h1 className="text-3xl pt-4 tracking-wide font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-900 via-gray-50 to-purple-900">UI ELEMENTS</h1>
-        <div className="px-12 mx-8 w-full flex">
+        <div className="px-12 w-full flex">
           <div className="w-1/2 mt-24 h-96 bg-light-smoke bg-opacity-20 bg-cover shadow-2xl rounded-xl">
             <img className="h-full" src={uiImg} />
           </div>

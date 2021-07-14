@@ -31,6 +31,19 @@ module.exports = {
       boxShadow: {
         'green-lg': '0 10px 15px 0px rgba(167, 243, 208, 1), 0 4px 6px -2px rgba(167, 243, 208, 0.1)',
         'deep-inner': 'inset 0 2px 4px 0 #dc2626'
+      },
+      backgroundImage: theme => ({
+        'mesh': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bdaafd9e3ec8fae4f8e_Mesh%2034.jpg)',
+        'smokey-purple-mesh': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bd71c699439d918ecd9_Mesh%2024.jpg)',
+        'smokey-blue-mesh': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bd7a2e65b4f98f6413d_Mesh%2025.jpg)',
+        'light-smoke': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bf1a2e65b932df641ac_Mesh%2098.jpg)'
+      }),
+      backgroundSize: {
+        '100%': '100%'
+      },
+      fontFamily: {
+        'hero-primary': ['Dancing Script', 'cursive'],
+        'hero-secondary': ['Inter']
       }
     },
   },

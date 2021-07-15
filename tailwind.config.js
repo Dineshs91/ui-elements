@@ -35,7 +35,7 @@ module.exports = {
       backgroundImage: theme => ({
         'mesh': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bdaafd9e3ec8fae4f8e_Mesh%2034.jpg)',
         'smokey-purple-mesh': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bd71c699439d918ecd9_Mesh%2024.jpg)',
-        'smokey-blue-mesh': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bd7a2e65b4f98f6413d_Mesh%2025.jpg)',
+        'smokey-blue-mesh': 'url(./images/gradient.jpg)',
         'light-smoke': 'url(https://uploads-ssl.webflow.com/5ec207a448d573153616868a/60e32bf1a2e65b932df641ac_Mesh%2098.jpg)'
       }),
       backgroundSize: {

@@ -10,7 +10,7 @@ function Header() {
 
   if(location.pathname !== "/") {
     return (
-      <div className="flex items-center justify-center fixed w-full  text-xl font-bold h-12 shadow-md bg-gray-700 text-gray-50">
+      <div className="flex items-center justify-center fixed w-full text-xl font-bold h-12 shadow-md bg-gradient-to-r from-purple-600 to-indigo-400 text-gray-50">
         UI Elements
       </div>
     )

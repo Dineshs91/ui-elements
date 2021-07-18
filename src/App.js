@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './elements/home';
 import Forms from './elements/forms/index';
+import Cards from './elements/cards/index';
 import { useLocation } from "react-router";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -10,7 +11,7 @@ function Header() {
 
   if(location.pathname !== "/") {
     return (
-      <div className="flex items-center justify-center fixed w-full text-xl font-bold h-12 shadow-md bg-gradient-to-r from-purple-600 to-indigo-400 text-gray-50">
+      <div className="flex items-center justify-center fixed z-10 w-full text-xl font-bold h-12 shadow-md bg-gradient-to-r from-purple-600 to-indigo-400 text-gray-50">
         UI Elements
       </div>
     )
@@ -26,6 +27,7 @@ function App() {
         <Header />
         <Route path="/" exact component={Home} />
         <Route path="/forms" exact component={Forms} />
+        <Route path="/cards" exact component={Cards} />
       </div>
     </Router>
   );

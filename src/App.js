@@ -1,5 +1,6 @@
 import './App.css';
 import Home from './elements/home';
+import Landing from './elements/landing';
 import Forms from './elements/forms/index';
 import Cards from './elements/cards/index';
 import { useLocation } from "react-router";
@@ -12,7 +13,7 @@ function Header() {
   if(location.pathname !== "/") {
     return (
       <div className="flex items-center justify-center fixed z-10 w-full text-xl font-bold h-12 shadow-md bg-gradient-to-r from-purple-600 to-indigo-400 text-gray-50">
-        UI Elements
+        <a href="/home">UI Elements</a>
       </div>
     )
   } else {
@@ -25,7 +26,8 @@ function App() {
     <Router>
       <div className="h-screen">
         <Header />
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Landing} />
+        <Route path="/home" exact component={Home} />
         <Route path="/forms" exact component={Forms} />
         <Route path="/cards" exact component={Cards} />
       </div>

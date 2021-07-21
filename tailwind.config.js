@@ -44,8 +44,7 @@ module.exports = {
       fontFamily: {
         'hero-primary': ['Dancing Script', 'cursive'],
         'hero-secondary': ['Inter']
-      },
-      backgroundColor: ['group-focus'],
+      }
     },
   },
   variants: {

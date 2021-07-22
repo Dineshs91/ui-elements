@@ -26,7 +26,7 @@ function Header() {
 function App() {
   return (
     <Router>
-      <div className="h-screen">
+      <div className="">
         <Header />
         <Route path="/" exact component={Landing} />
         <Route path="/home" exact component={Home} />

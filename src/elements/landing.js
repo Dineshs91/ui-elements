@@ -32,7 +32,7 @@ export default function Home() {
         <ColorSwatchIcon className="h-6 w-6 text-left"></ColorSwatchIcon>
         <p className="ml-2 text-xl font-semibold text-gray-700">UI Elements</p>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center">
+      <div className="flex flex-col xl:mt-10 xl:mb-32 md:flex-row items-center justify-center">
         <section className="flex mt-16 md:w-1/2">
           <div>
             <h1 className="font-bold text-3xl lg:text-4xl xl:text-5xl text-gray-900">Design inspiration <br/> for your <br/> <span className="text-purple-600 transition delay-100">{headingWords[headingWordIndex]}</span></h1>
@@ -46,10 +46,12 @@ export default function Home() {
         </section>
         <img className="mt-8 w-full md:mt-0 md:w-1/2" src={img}></img>
       </div>
-      <div className="flex flex-col-reverse md:mt-12 md:flex-row items-center justify-center">
-        <img className="w-1/2" src={multimediaImg}></img>
-        <section className="mt-16 md:w-1/2 px-4 bg-gray-50 md:bg-white">
-          There are times where you just wanted to glance at existing designs to bake your own ideas.
+      <div className="flex flex-col-reverse md:mt-12 md:flex-row bg-gray-100 items-center justify-center">
+        <img className="w-full md:w-1/2" src={multimediaImg}></img>
+        <section className="mt-16 md:w-1/2 px-4">
+          <h3 className="text-gray-700 text-lg xl:text-xl">
+            There are times where you just wanted to glance at existing designs to bake your own ideas.
+          </h3>
         </section>
       </div>
     </div>

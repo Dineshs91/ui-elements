@@ -42,8 +42,7 @@ module.exports = {
         '100%': '100%'
       },
       fontFamily: {
-        'hero-primary': ['Dancing Script', 'cursive'],
-        'hero-secondary': ['Inter']
+        'inter': ['Inter']
       }
     },
   },

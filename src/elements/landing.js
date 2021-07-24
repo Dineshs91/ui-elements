@@ -5,9 +5,9 @@ import multimediaImg from '../images/multimedia.svg';
 
 export default function Home() {
   const headingWords = [
-    "Project",
+    "Client Work",
     "Side Project",
-    "Learning"
+    "Coding Bootcamp"
   ];
   const [headingWordIndex, setHeadingWordIndex] = useState(0);
 
@@ -35,7 +35,7 @@ export default function Home() {
       <div className="flex flex-col xl:mt-10 xl:mb-32 md:flex-row items-center justify-center">
         <section className="flex mt-16 md:w-1/2">
           <div>
-            <h1 className="font-bold text-3xl lg:text-4xl xl:text-5xl text-gray-900">Design inspiration <br/> for your <br/> <span className="text-purple-600 transition delay-100">{headingWords[headingWordIndex]}</span></h1>
+            <h1 className="font-bold text-3xl lg:text-4xl xl:text-5xl text-gray-900">Design inspiration <br/> for your next <br/> <span className="text-purple-600 transition delay-100">{headingWords[headingWordIndex]}</span></h1>
             <h2 className="mt-8 text-base xl:text-lg text-left text-gray-700">
               A gallery of all the popular components <br/> to help you with your next endeavour.
             </h2>
@@ -49,8 +49,9 @@ export default function Home() {
       <div className="flex flex-col-reverse md:mt-12 md:flex-row bg-gray-100 items-center justify-center">
         <img className="w-full md:w-1/2" src={multimediaImg}></img>
         <section className="mt-16 md:w-1/2 px-4">
-          <h3 className="text-gray-700 text-lg xl:text-xl">
-            There are times where you just wanted to glance at existing designs to bake your own ideas.
+          <h3 className="text-gray-700 md:font-light text-lg text-center lg:text-2xl">
+            There are times where you just wanted to glance at existing designs to bake your own ideas. You are at the
+            right place.
           </h3>
         </section>
       </div>

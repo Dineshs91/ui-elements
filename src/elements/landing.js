@@ -39,9 +39,9 @@ export default function Home() {
             <h2 className="mt-8 text-base xl:text-lg text-left text-gray-700">
               A gallery of all the popular components <br/> to help you with your next endeavour.
             </h2>
-            <button className="cursor-pointer mt-10 p-2 font-bold tracking-wider rounded-lg bg-purple-600 shadow-md hover:bg-purple-700 transition delay-100 text-white w-full">
-              <a href="/home">Browse</a>
-            </button>
+            <a href="/home" className="block text-center cursor-pointer mt-10 p-2 font-bold tracking-wider rounded-lg bg-purple-600 shadow-md hover:bg-purple-700 transition delay-100 text-white w-full">
+              Browse
+            </a>
           </div>
         </section>
         <img className="mt-8 w-full md:mt-0 md:w-1/2" src={img}></img>

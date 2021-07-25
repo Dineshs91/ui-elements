@@ -66,7 +66,9 @@ export default function Home() {
           <img className="w-1/2 h-full md:h-80 xl:h-80 md:w-1/2" src={workImg}></img>
         </div>
       </div>
-      <div className="mt-12 py-4 bg-gray-800 text-gray-200 text-center text-xs">
+      <div className="mt-12 px-8 py-4 bg-gray-800 text-gray-400 text-center md:text-right text-xs">
+        <h4 className="text-gray-50 text-sm">Attribution</h4>
+        <a className="underline" href="https://2.flexiple.com/scale/multi-color-illustrations">Illustrations by Flexiple Scale</a><br/>
         <a className="underline" href="https://storyset.com/work">Work illustration by Storyset</a>
       </div>
     </div>

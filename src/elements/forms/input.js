@@ -1,9 +1,22 @@
 import { UserIcon, EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Input() {
+  const useFocus = () => {
+    const htmlElRef = useRef(null)
+    const setFocus = () => {htmlElRef.current &&  htmlElRef.current.focus()}
+
+    return [ htmlElRef, setFocus ] 
+  }
+
   const [inputThreeActive, setInputThreeActive] = useState(false);
   const [showOnePassword, setShowOnePassword] = useState(false);
+  const [passwordOneRef, setInputFocus] = useFocus();
+
+  const onClickShowPassword = (value) => {
+    setInputFocus();
+    setShowOnePassword(value);
+  }
 
   return (
     <div className="pt-20 max-w-sm md:max-w-md lg:max-w-lg mx-auto px-6">
@@ -28,10 +41,10 @@ export default function Input() {
 
         <div>
           <label className="px-1 text-gray-600">Password</label>
-          <div className="mt-1 border border-gray-300 rounded-lg px-2 py-1 flex space-x-2 items-center text-gray-300 focus-within:border-2 focus-within:text-gray-500 focus-within:border-purple-500">
-            <input type={showOnePassword ? "text": "password"} className="w-full font-normal text-sm outline-none focus:text-gray-700"></input>
-            <EyeIcon onClick={() => setShowOnePassword(true)} className={"h-6 w-6 " + (showOnePassword && "hidden")}></EyeIcon>
-            <EyeOffIcon onClick={() => setShowOnePassword(false)} className={"h-6 w-6 " + (!showOnePassword && "hidden")}></EyeOffIcon>
+          <div className="mt-1 border border-gray-300 rounded-lg px-2 h-8 flex space-x-2 items-center text-gray-300 focus-within:border-2 focus-within:text-gray-500 focus-within:border-purple-500">
+            <input ref={passwordOneRef} type={showOnePassword ? "text": "password"} className="w-full font-normal text-sm outline-none focus:text-gray-700"></input>
+            <EyeIcon onClick={() => onClickShowPassword(true)} className={"h-6 w-6 " + (showOnePassword && "hidden")}></EyeIcon>
+            <EyeOffIcon onClick={() => onClickShowPassword(false)} className={"h-6 w-6 " + (!showOnePassword && "hidden")}></EyeOffIcon>
           </div>
         </div>
       </div>

@@ -43,8 +43,8 @@ export default function Input() {
           <label className="px-1 text-gray-600">Password</label>
           <div className="mt-1 border border-gray-300 rounded-lg px-2 h-8 flex space-x-2 items-center text-gray-300 focus-within:border-2 focus-within:text-gray-500 focus-within:border-purple-500">
             <input ref={passwordOneRef} type={showOnePassword ? "text": "password"} className="w-full font-normal text-sm outline-none focus:text-gray-700"></input>
-            <EyeIcon onClick={() => onClickShowPassword(true)} className={"h-6 w-6 " + (showOnePassword && "hidden")}></EyeIcon>
-            <EyeOffIcon onClick={() => onClickShowPassword(false)} className={"h-6 w-6 " + (!showOnePassword && "hidden")}></EyeOffIcon>
+            <EyeIcon onClick={() => onClickShowPassword(true)} className={"h-6 w-6 cursor-pointer " + (showOnePassword && "hidden")}></EyeIcon>
+            <EyeOffIcon onClick={() => onClickShowPassword(false)} className={"h-6 w-6 cursor-pointer " + (!showOnePassword && "hidden")}></EyeOffIcon>
           </div>
         </div>
       </div>

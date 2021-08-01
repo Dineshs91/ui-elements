@@ -1,5 +1,5 @@
 import { UserIcon, EyeIcon, EyeOffIcon, ChevronDownIcon } from '@heroicons/react/solid';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function Input() {
   const useFocus = () => {
@@ -17,10 +17,10 @@ export default function Input() {
   const [primaryLanguageDropdownValue, setPrimaryLanguageDropdownValue] = useState("Please choose");
 
   const languages = {
-    javascript: <i class="devicon-javascript-plain"></i>,
-    python: <i class="devicon-python-plain"></i>,
-    java: <i class="devicon-java-plain"></i>,
-    rust: <i class="devicon-rust-plain"></i>
+    javascript: <i className="devicon-javascript-plain"></i>,
+    python: <i className="devicon-python-plain"></i>,
+    java: <i className="devicon-java-plain"></i>,
+    rust: <i className="devicon-rust-plain"></i>
   };
 
   const primaryLanguageRef = useRef();
@@ -35,6 +35,20 @@ export default function Input() {
     document.addEventListener('mousedown', handlePrimaryLanguageClickOutside);
     return () => document.removeEventListener('mousedown', handlePrimaryLanguageClickOutside);
   });
+
+  const escFunction = useCallback((event) => {
+    if(event.keyCode === 27) {
+      setPrimaryLanguageDropdownActive(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, []);
 
   const onClickShowPassword = (value) => {
     setInputFocus();
@@ -105,7 +119,6 @@ export default function Input() {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

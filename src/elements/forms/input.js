@@ -1,6 +1,34 @@
 import { UserIcon, EyeIcon, EyeOffIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+const useKeyPress = function(targetKey) {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  function downHandler({ key }) {
+    if (key === targetKey) {
+      setKeyPressed(true);
+    }
+  }
+
+  const upHandler = ({ key }) => {
+    if (key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", downHandler);
+    window.addEventListener("keyup", upHandler);
+
+    return () => {
+      window.removeEventListener("keydown", downHandler);
+      window.removeEventListener("keyup", upHandler);
+    };
+  });
+
+  return keyPressed;
+};
+
 export default function Input() {
   const useFocus = () => {
     const htmlElRef = useRef(null)
@@ -14,7 +42,14 @@ export default function Input() {
   const [passwordOneRef, setInputFocus] = useFocus();
   const [primaryLanguageDropdownActive, setPrimaryLanguageDropdownActive] = useState(false);
 
+  // Primary language variables.
+  const downPress = useKeyPress("ArrowDown");
+  const upPress = useKeyPress("ArrowUp");
+  const enterPress = useKeyPress("Enter");
+  const [cursor, setCursor] = useState(0);
+
   const [primaryLanguageDropdownValue, setPrimaryLanguageDropdownValue] = useState("Please choose");
+  const [primaryLanguageDropdownInFocus, setPrimaryLanguageDropdownInFocus] = useState(false);
 
   const languages = {
     javascript: <i className="devicon-javascript-plain"></i>,
@@ -23,10 +58,42 @@ export default function Input() {
     rust: <i className="devicon-rust-plain"></i>
   };
 
-  const primaryLanguageRef = useRef();
+  useEffect(() => {
+    let itemsLength = Object.keys(languages).length;
+
+    if (primaryLanguageDropdownActive && itemsLength && downPress) {
+      setCursor(prevState =>
+        prevState < itemsLength - 1 ? prevState + 1 : prevState
+      );
+    }
+  }, [downPress]);
+
+  useEffect(() => {
+    let itemsLength = Object.keys(languages).length;
+    if (primaryLanguageDropdownActive && itemsLength && upPress) {
+      setCursor(prevState => (prevState > 0 ? prevState - 1 : prevState));
+    }
+  }, [upPress]);
+
+  useEffect(() => {
+    let itemsLength = Object.keys(languages).length;
+    if (itemsLength && enterPress) {
+      let currentItem = Object.keys(languages)[cursor];
+      setPrimaryLanguageDropdownValue(currentItem);
+      setPrimaryLanguageDropdownActive(!primaryLanguageDropdownActive);
+    }
+  }, [cursor, enterPress]);
+
+  useEffect(() => {
+    let currentItem = Object.keys(languages)[cursor];
+    setPrimaryLanguageDropdownValue(currentItem);
+  }, [cursor]);
+
+  const [primaryLanguageDivRef, setPrimaryLanguageDivFocus] = useFocus();
+  const primaryLanguageDropdownRef = useRef();
 
   const handlePrimaryLanguageClickOutside = e => {
-    if (!primaryLanguageRef.current.contains(e.target)) {
+    if (!primaryLanguageDropdownRef.current.contains(e.target)) {
       setPrimaryLanguageDropdownActive(false);
     }
   };
@@ -54,6 +121,41 @@ export default function Input() {
     setInputFocus();
     setShowOnePassword(value);
   }
+
+  const primaryLanguageClick = (e, language) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    setPrimaryLanguageDropdownValue(language);
+    let cursorIndex = Object.keys(languages).indexOf(language);
+    setCursor(cursorIndex);
+    setPrimaryLanguageDropdownActive(false);
+    setPrimaryLanguageDivFocus();
+  }
+
+  const primaryLanguageDivFocus = () => {
+    setPrimaryLanguageDropdownInFocus(true);
+  }
+
+  const primaryLanguageDivBlur = () => {
+    setPrimaryLanguageDropdownInFocus(false);
+  }
+
+  const primaryLanguageDivClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    setPrimaryLanguageDropdownActive(!primaryLanguageDropdownActive);
+    setPrimaryLanguageDivFocus();
+  }
+
+  useEffect(() => {
+    if(primaryLanguageDropdownInFocus) {
+      setPrimaryLanguageDropdownActive(true);
+    } else {
+      setPrimaryLanguageDropdownActive(false);
+    }
+  }, [primaryLanguageDropdownInFocus]);
 
   return (
     <div className="pt-20 max-w-sm md:max-w-md lg:max-w-lg mx-auto px-6">
@@ -100,19 +202,19 @@ export default function Input() {
           </div>
         </div>
 
-        <div ref={primaryLanguageRef} className="relative">
+        <div className="relative">
           <label className="px-1 text-gray-600">Primary Language</label>
-          <div onClick={() => setPrimaryLanguageDropdownActive(!primaryLanguageDropdownActive)} className="mt-1 relative border border-gray-300 cursor-pointer focus-within:border-purple-500 rounded-lg px-2 h-8 space-x-2 flex items-center">
+          <div tabIndex={0} ref={primaryLanguageDivRef} onFocus={primaryLanguageDivFocus} onBlur={primaryLanguageDivBlur} onMouseDown={primaryLanguageDivClick} className="mt-1 relative border border-gray-300 cursor-pointer outline-none focus:border-purple-500 focus-within:border-purple-500 rounded-lg px-2 h-8 space-x-2 flex items-center">
             <span className="text-gray-600 capitalize">{primaryLanguageDropdownValue}</span>
             <ChevronDownIcon className="absolute right-2 h-4 w-5 inline text-right"></ChevronDownIcon>
           </div>
 
-          <div className={"absolute bg-white w-full shadow-md rounded-md text-gray-700 border-2 border-purple-400 top-auto mt-1 " + (primaryLanguageDropdownActive ? "block": "hidden") }>
+          <div ref={primaryLanguageDropdownRef} className={"absolute bg-white w-full shadow-md rounded-md text-gray-700 border-2 border-purple-400 top-auto mt-1 " + (primaryLanguageDropdownActive ? "block": "hidden") }>
               <ul>
                 {
                   Object.entries(languages).map(function(languageObj, index) {
                     let [language, languageIcon] = languageObj;
-                    return <li onClick={() => setPrimaryLanguageDropdownValue(language)} className={"px-4 py-0.5 cursor-pointer capitalize hover:bg-purple-500 hover:text-gray-50 " + (primaryLanguageDropdownValue == language ? "bg-purple-600 text-gray-50": "") } key={index}>{languageIcon} {language}</li>;
+                    return <li onMouseDown={(e) => primaryLanguageClick(e, language)} className={"px-4 py-0.5 cursor-pointer capitalize hover:bg-purple-500 hover:text-gray-50 " + (primaryLanguageDropdownValue == language ? "bg-purple-600 text-gray-50": "") } key={index}>{languageIcon} {language}</li>;
                   })
                 }
               </ul>

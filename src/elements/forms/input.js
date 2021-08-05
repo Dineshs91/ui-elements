@@ -1,5 +1,7 @@
-import { UserIcon, EyeIcon, EyeOffIcon, ChevronDownIcon } from '@heroicons/react/solid';
+import { UserIcon, EyeIcon, EyeOffIcon, ChevronDownIcon, SelectorIcon } from '@heroicons/react/solid';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Listbox } from '@headlessui/react'
+
 
 const useKeyPress = function(targetKey) {
   const [keyPressed, setKeyPressed] = useState(false);
@@ -58,6 +60,14 @@ export default function Input() {
     rust: <i className="devicon-rust-plain"></i>
   };
 
+  const softwareRoles = [
+    "software developer",
+    "senior software developer",
+    "architect"
+  ];
+
+  const [selectedSoftwareRole, setSelectedSoftwareRole] = useState(softwareRoles[0]);
+
   useEffect(() => {
     let itemsLength = Object.keys(languages).length;
 
@@ -77,7 +87,7 @@ export default function Input() {
 
   useEffect(() => {
     let itemsLength = Object.keys(languages).length;
-    if (itemsLength && enterPress) {
+    if (itemsLength && enterPress && primaryLanguageDropdownInFocus) {
       let currentItem = Object.keys(languages)[cursor];
       setPrimaryLanguageDropdownValue(currentItem);
       setPrimaryLanguageDropdownActive(!primaryLanguageDropdownActive);
@@ -209,7 +219,7 @@ export default function Input() {
             <ChevronDownIcon className="absolute right-2 h-4 w-5 inline text-right"></ChevronDownIcon>
           </div>
 
-          <div ref={primaryLanguageDropdownRef} className={"absolute bg-white w-full shadow-md rounded-md text-gray-700 border-2 border-purple-400 top-auto mt-1 " + (primaryLanguageDropdownActive ? "block": "hidden") }>
+          <div ref={primaryLanguageDropdownRef} className={"absolute z-10 bg-white w-full shadow-md rounded-md text-gray-700 border-2 border-purple-400 top-auto mt-1 " + (primaryLanguageDropdownActive ? "block": "hidden") }>
               <ul>
                 {
                   Object.entries(languages).map(function(languageObj, index) {
@@ -219,6 +229,32 @@ export default function Input() {
                 }
               </ul>
           </div>
+        </div>
+
+        <div>
+          <Listbox value={selectedSoftwareRole} onChange={setSelectedSoftwareRole} >
+            <div className="relative mt-1">
+              <Listbox.Button className="flex px-1 h-8 items-center w-full border border-gray-300 cursor-pointer outline-none focus:border-purple-500 focus-within:border-purple-500 rounded-lg">
+                <div className="px-1 flex-grow text-left capitalize text-gray-600">{selectedSoftwareRole}</div>
+                <SelectorIcon className="w-5 h-5 text-black" aria-hidden="true"></SelectorIcon>
+              </Listbox.Button>
+              <Listbox.Options className="absolute w-full border border-purple-500 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {softwareRoles.map((role, index) => (
+                  <Listbox.Option
+                    key={index}
+                    value={role}
+                    
+                    className={({ active }) =>
+                    `${active ? 'text-gray-50 bg-purple-500' : 'text-gray-700'}
+                    capitalize px-2 text-base cursor-pointer hover:bg-purple-500 hover:text-gray-50 select-none relative py-2 pl-10 pr-4`
+                  }
+                  >
+                    {role}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </div>
+          </Listbox>
         </div>
       </div>
     </div>

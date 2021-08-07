@@ -7,6 +7,9 @@ function Items() {
       <a className="flex flex-col pb-8 items-center p-6 w-full md:w-80 bg-white rounded-xl shadow-xl" href="/forms">
         Forms
       </a>
+      <a className="flex flex-col pb-8 items-center p-6 w-full md:w-80 bg-white rounded-xl shadow-xl" href="/navbar">
+        NavBar
+      </a>
     </div>
     
   )

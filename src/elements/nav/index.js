@@ -1,7 +1,7 @@
-import { CashIcon, MenuIcon, CogIcon, LogoutIcon } from '@heroicons/react/outline';
+import { CashIcon, MenuIcon, CogIcon, LogoutIcon, XIcon } from '@heroicons/react/outline';
 import avatarImg from '../../images/navbar/avatar.svg';
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 
 function ProfileDropdown() {
@@ -17,11 +17,11 @@ function ProfileDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="py-3 mr-3 md:mr-5 w-28 absolute right-0 text-left font-light text-sm bg-yellow-300 text-black rounded-md shadow-md">
+        <Menu.Items className="z-10 py-3 mr-3 md:mr-5 w-28 absolute right-0 text-left font-light text-sm bg-yellow-500 text-black rounded-md shadow-md">
           <Menu.Item>
             {({ active }) => (
               <button
-                className={`${active && 'bg-yellow-500 text-black'} pl-3 py-1 w-full`}
+                className={`${active && 'bg-yellow-400 text-black'} pl-3 py-1 w-full`}
                 href="#"
               >
                 <div className="flex items-center">
@@ -34,7 +34,7 @@ function ProfileDropdown() {
           <Menu.Item>
             {({ active }) => (
               <button
-              className={`${active && 'bg-yellow-500 text-black'} pl-3 py-1 w-full`}
+              className={`${active && 'bg-yellow-400 text-black'} pl-3 py-1 w-full`}
                 href="#"
               >
                 <div className="flex items-center">
@@ -50,12 +50,26 @@ function ProfileDropdown() {
   )
 }
 
+function MobileMenu(props) {
+  return (
+    <div className={"absolute left-0 top-10 w-full rounded-b-sm px-4 pt-2 pb-4 bg-gray-800 text-gray-200 " + (!props.isMenuActive && "hidden")}>
+      <div className="space-y-2">
+        <a className="block" href="#">Dashboard</a>
+        <a className="block" href="#">Trade</a>
+      </div>
+    </div>
+  )
+}
+
 export default function Nav() {
+  const [isMenuActive, setIsMenuActive] = useState(false);
+
   return (
     <div className="pt-20">
-      <div className="px-4 flex items-center bg-gray-800">
+      <div className="px-4 flex relative items-center bg-gray-800">
         <div>
-          <MenuIcon className="h-5 w-5 text-gray-200"></MenuIcon>
+          <MenuIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"h-5 w-5 text-gray-200 " + (isMenuActive && "hidden")}></MenuIcon>
+          <XIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"h-5 w-5 text-gray-200 " + (!isMenuActive && "hidden")}></XIcon>
         </div>
         <div className="pl-2 flex flex-grow">
           <CashIcon className="h-6 w-6 text-yellow-500"></CashIcon>
@@ -70,6 +84,7 @@ export default function Nav() {
         <div className="h-10 flex items-center">
           <ProfileDropdown></ProfileDropdown>
         </div>
+        <MobileMenu isMenuActive={isMenuActive}></MobileMenu>
       </div>
     </div>
   )

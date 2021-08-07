@@ -65,8 +65,10 @@ export default function Nav() {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   return (
-    <div className="pt-20">
-      <div className="px-4 flex relative items-center bg-gray-800">
+    <div className="py-20">
+      <h3 className="text-center text-xl font-normal">Navbar</h3>
+
+      <div className="mt-8 px-4 flex relative items-center bg-gray-800">
         <div className="h-5 w-5 text-gray-300 cursor-pointer">
           <MenuIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (isMenuActive && "hidden")}></MenuIcon>
           <XIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (!isMenuActive && "hidden")}></XIcon>

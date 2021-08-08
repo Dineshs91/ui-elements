@@ -73,14 +73,14 @@ export default function Nav() {
           <MenuIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (isMenuActive && "hidden")}></MenuIcon>
           <XIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (!isMenuActive && "hidden")}></XIcon>
         </div>
-        <div className="pl-2 flex flex-grow">
+        <div className="pl-2 flex flex-grow md:flex-grow-0">
           <CashIcon className="h-6 w-6 text-yellow-500"></CashIcon>
           <h2 className="pl-2 font-bold tracking-wide text-yellow-500">Cryptcoin</h2>
         </div>
 
-        <div className="hidden md:block text-gray-300">
-          <a href="#">Dashboard</a>
-          <a href="#">Trade</a>
+        <div className="hidden md:block flex-grow text-left px-10 space-x-4 text-gray-300">
+          <a className="hover:text-gray-50" href="#">Dashboard</a>
+          <a className="hover:text-gray-50" href="#">Trade</a>
         </div>
 
         <div className="h-10 flex items-center">

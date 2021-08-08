@@ -7,7 +7,7 @@ import { Fragment, useState } from 'react'
 function ProfileDropdown() {
   return (
     <Menu as="div">
-      <Menu.Button><img className="h-7 w-7 mt-1 cursor-pointer rounded-full" src={avatarImg} /></Menu.Button>
+      <Menu.Button className="focus:outline-none"><img className="h-7 w-7 mt-1 cursor-pointer rounded-full" src={avatarImg} /></Menu.Button>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -17,7 +17,7 @@ function ProfileDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="z-10 py-3 mr-3 md:mr-5 w-28 absolute right-0 text-left font-light text-sm bg-yellow-500 text-black rounded-md shadow-md">
+        <Menu.Items className="z-10 py-3 mr-3 md:mr-5 w-28 absolute right-0 text-left font-light text-sm bg-yellow-500 text-black rounded-md shadow-md focus:outline-none">
           <Menu.Item>
             {({ active }) => (
               <button
@@ -69,7 +69,7 @@ export default function Nav() {
       <h3 className="text-center text-xl font-normal">Navbar</h3>
 
       <div className="mt-8 px-4 flex relative items-center bg-gray-800">
-        <div className="h-5 w-5 text-gray-300 cursor-pointer">
+        <div className="h-5 w-5 md:hidden text-gray-300 cursor-pointer">
           <MenuIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (isMenuActive && "hidden")}></MenuIcon>
           <XIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (!isMenuActive && "hidden")}></XIcon>
         </div>

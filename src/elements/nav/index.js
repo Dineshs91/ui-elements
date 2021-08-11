@@ -9,8 +9,8 @@ export function MobileMenu(props) {
   return (
     <div className={`absolute left-0 top-10 z-10 w-full rounded-b-sm px-4 pt-2 pb-4 ${props.textColor} ${props.bgColor} ` + (!props.isMenuActive && "hidden")}>
       <div className="space-y-2">
-        <a className="block hover:text-gray-50" href="#">Dashboard</a>
-        <a className="block hover:text-gray-50" href="#">Trade</a>
+        <a className={`block hover:${props.hoverTextColor}`} href="#">Dashboard</a>
+        <a className={`block hover:${props.hoverTextColor}`} href="#">Trade</a>
       </div>
     </div>
   )

@@ -70,7 +70,7 @@ export default function Nav1() {
       <div className="h-10 flex items-center">
         <ProfileDropdown></ProfileDropdown>
       </div>
-      <MobileMenu textColor={"text-gray-300"} bgColor={"bg-gray-800"} isMenuActive={isMenuActive}></MobileMenu>
+      <MobileMenu hoverTextColor={"text-gray-500"} textColor={"text-gray-300"} bgColor={"bg-gray-800"} isMenuActive={isMenuActive}></MobileMenu>
     </div>
   )
 }

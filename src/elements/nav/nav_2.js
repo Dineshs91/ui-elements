@@ -33,7 +33,7 @@ export default function Nav2() {
       <div className="h-10 flex items-center">
         <ProfileDropdown></ProfileDropdown>
       </div>
-      <MobileMenu textColor={"text-gray-900"} bgColor={"bg-gray-100"} isMenuActive={isMenuActive}></MobileMenu>
+      <MobileMenu hoverTextColor={"text-gray-600"} textColor={"text-gray-900"} bgColor={"bg-gray-100"} isMenuActive={isMenuActive}></MobileMenu>
     </div>
   )
 }

@@ -1,64 +1,9 @@
-import { CashIcon, MenuIcon, CogIcon, LogoutIcon, XIcon } from '@heroicons/react/outline';
-import avatarImg from '../../images/navbar/avatar.svg';
-import { Menu, Transition, Popover } from '@headlessui/react';
+import { CashIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+
+import { Transition, Popover } from '@headlessui/react';
 import { Fragment, useState } from 'react';
+import { MobileMenu, ProfileDropdown } from './index';
 
-function ProfileDropdown() {
-  return (
-    <Menu as="div">
-      <Menu.Button className="focus:outline-none"><img className="h-7 w-7 mt-1 cursor-pointer rounded-full" src={avatarImg} /></Menu.Button>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="z-10 py-3 mr-3 md:mr-5 w-28 lg:w-40 xl:w-48 absolute right-0 text-left font-light text-sm lg:text-lg bg-yellow-500 text-gray-900 rounded-md shadow-md focus:outline-none">
-          <Menu.Item>
-            {({ active }) => (
-              <button
-                className={`${active && 'bg-yellow-400 text-black'} pl-3 py-1 w-full`}
-                href="#"
-              >
-                <div className="flex items-center">
-                  <CogIcon className="h-4 w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6  block"></CogIcon>
-                  <div className="pl-1">Settings</div>
-                </div>
-              </button>
-            )}
-          </Menu.Item>
-          <Menu.Item>
-            {({ active }) => (
-              <button
-              className={`${active && 'bg-yellow-400 text-black'} pl-3 py-1 w-full`}
-                href="#"
-              >
-                <div className="flex items-center">
-                  <LogoutIcon className="h-4 w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 block"></LogoutIcon>
-                  <div className="pl-1">Logout</div>
-                </div>
-              </button>
-            )}
-          </Menu.Item>
-        </Menu.Items>
-      </Transition>
-    </Menu>
-  )
-}
-
-function MobileMenu(props) {
-  return (
-    <div className={"absolute left-0 top-10 w-full rounded-b-sm px-4 pt-2 pb-4 bg-gray-800 text-gray-300 " + (!props.isMenuActive && "hidden")}>
-      <div className="space-y-2">
-        <a className="block hover:text-gray-50" href="#">Dashboard</a>
-        <a className="block hover:text-gray-50" href="#">Trade</a>
-      </div>
-    </div>
-  )
-}
 
 function TradePopover() {
   let [referenceElement, setReferenceElement] = useState()
@@ -125,7 +70,7 @@ export default function Nav1() {
       <div className="h-10 flex items-center">
         <ProfileDropdown></ProfileDropdown>
       </div>
-      <MobileMenu isMenuActive={isMenuActive}></MobileMenu>
+      <MobileMenu textColor={"text-gray-300"} bgColor={"bg-gray-800"} isMenuActive={isMenuActive}></MobileMenu>
     </div>
   )
 }

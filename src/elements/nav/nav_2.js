@@ -7,7 +7,7 @@ export default function Nav2() {
   const [activeLink, setActiveLink] = useState("");
 
   return (
-    <div className="mt-8 px-4 flex relative items-center bg-gray-100">
+    <div className="px-4 flex relative items-center bg-gray-100">
       <div className="h-5 w-5 md:hidden text-gray-900 cursor-pointer">
         <MenuIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (isMenuActive && "hidden")}></MenuIcon>
         <XIcon onClick={() => setIsMenuActive(!isMenuActive)} className={"" + (!isMenuActive && "hidden")}></XIcon>

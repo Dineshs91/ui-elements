@@ -7,3 +7,25 @@
         word-spacing: 0.15rem;
     }
 }
+
+.search-bar {
+    transition: width 1s;
+}
+
+@screen md {
+    .search-bar:focus-within {
+        width: 18rem;
+    }
+}
+
+@screen lg {
+    .search-bar:focus-within {
+        width: 24rem;
+    }
+}
+
+@screen xl {
+    .search-bar:focus-within {
+        width: 40rem;
+    }
+}

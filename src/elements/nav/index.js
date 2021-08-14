@@ -1,5 +1,6 @@
 import Nav1 from './nav_1';
 import Nav2 from './nav_2';
+import Nav3 from './nav_3';
 import {CogIcon, LogoutIcon} from '@heroicons/react/outline';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
@@ -65,10 +66,13 @@ export function ProfileDropdown() {
 export default function Nav() {
   return (
     <div className="py-20">
-      <h3 className="text-center text-xl font-normal">Navbar</h3>
+      <h3 className="text-center mb-4 text-xl font-normal">Navbar</h3>
 
-      <Nav1></Nav1>
-      <Nav2></Nav2>
+      <div className="space-y-16">
+        <Nav1></Nav1>
+        <Nav3></Nav3>
+        <Nav2></Nav2>
+      </div>
     </div>
   )
 };

@@ -6,6 +6,7 @@ import Cards from './elements/cards/index';
 import Buttons from './elements/forms/button';
 import Input from './elements/forms/input';
 import Nav from './elements/nav';
+import NavSteps from './elements/navSteps';
 import { useLocation } from "react-router";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/forms/inputs" exact component={Input} />
         <Route path="/cards" exact component={Cards} />
         <Route path="/navbar" exact component={Nav} />
+        <Route path="/navsteps" exact component={NavSteps} />
       </div>
     </Router>
   );

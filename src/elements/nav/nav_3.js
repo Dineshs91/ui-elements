@@ -1,4 +1,5 @@
-import { CashIcon, MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline';
+import { CashIcon, MenuIcon, XIcon, SearchIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import { BellIcon } from '@heroicons/react/solid';
 
 import { Transition, Popover } from '@headlessui/react';
 import { Fragment, useState } from 'react';
@@ -11,7 +12,9 @@ function TradePopover() {
 
   return (
     <Popover className="relative">
-      <Popover.Button ref={setReferenceElement} className="hover:text-gray-50">Trade</Popover.Button>
+      <Popover.Button ref={setReferenceElement} className="hover:text-gray-50">
+        Trade<ChevronDownIcon className="h-4 w-4 inline"></ChevronDownIcon>
+      </Popover.Button>
 
       <Transition
         as={Fragment}
@@ -76,7 +79,8 @@ export default function Nav3() {
         </div>
       </div>
 
-      <div className="h-10 flex items-center">
+      <div className="h-10 flex items-center space-x-4 shadow-inner">
+        <BellIcon className="h-5 w-5 text-gray-300 cursor-pointer hover:text-gray-400"></BellIcon>
         <ProfileDropdown></ProfileDropdown>
       </div>
       <MobileMenu hoverTextColor={"text-gray-500"} textColor={"text-gray-300"} bgColor={"bg-gray-800"} isMenuActive={isMenuActive}></MobileMenu>

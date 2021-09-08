@@ -1,4 +1,4 @@
-import { CashIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { CashIcon, MenuIcon, XIcon, ChevronDownIcon } from '@heroicons/react/outline';
 
 import { Transition, Popover } from '@headlessui/react';
 import { Fragment, useState } from 'react';
@@ -11,7 +11,9 @@ function TradePopover() {
 
   return (
     <Popover className="relative">
-      <Popover.Button ref={setReferenceElement} className="hover:text-gray-50">Trade</Popover.Button>
+      <Popover.Button ref={setReferenceElement} className="hover:text-gray-50">
+        Trade<ChevronDownIcon className="h-4 w-4 inline"></ChevronDownIcon>
+      </Popover.Button>
 
       <Transition
         as={Fragment}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MobileMenu, ProfileDropdown } from './index';
-import { CashIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { CashIcon, MenuIcon, XIcon, ChevronDownIcon } from '@heroicons/react/outline';
 
 export default function Nav2() {
   const [isMenuActive, setIsMenuActive] = useState(false);

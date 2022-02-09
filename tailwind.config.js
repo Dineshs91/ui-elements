@@ -47,7 +47,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ['hover', 'group-hover'],
+      margin: ['hover', 'group-hover']
+    },
   },
   plugins: [require("@tailwindcss/forms")({
     strategy: 'class',
